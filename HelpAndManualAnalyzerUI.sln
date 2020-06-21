@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpAndManualAnalyzerUI", "HelpAndManualAnalyzerUI\HelpAndManualAnalyzerUI.csproj", "{6063DD4D-988D-454B-8108-A504916C7434}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpAndManualAnalyzerCore", "HelpAndManualAnalyzerCore\HelpAndManualAnalyzerCore.csproj", "{7013B8CE-EB13-4694-A98E-5310324EA308}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6063DD4D-988D-454B-8108-A504916C7434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6063DD4D-988D-454B-8108-A504916C7434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6063DD4D-988D-454B-8108-A504916C7434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6063DD4D-988D-454B-8108-A504916C7434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7013B8CE-EB13-4694-A98E-5310324EA308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7013B8CE-EB13-4694-A98E-5310324EA308}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7013B8CE-EB13-4694-A98E-5310324EA308}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7013B8CE-EB13-4694-A98E-5310324EA308}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE1F4E21-FDCB-49FF-A49D-CE06291AB0D0}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,181 @@
+﻿<Window
+  x:Class="HelpAndManualAnalyzerUI.Views.MainWindow"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:coreModels="clr-namespace:HelpAndManualAnalyzerCore.Models;assembly=HelpAndManualAnalyzerCore"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:vm="clr-namespace:HelpAndManualAnalyzerUI.ViewModels;assembly=HelpAndManualAnalyzerUI"
+  Title="HelpAndManual Analyzer"
+  Width="800"
+  Height="450"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  Icon="/Assets/avalonia-logo.ico"
+  mc:Ignorable="d">
+
+  <Design.DataContext>
+    <vm:MainWindowViewModel />
+  </Design.DataContext>
+
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1*" MinWidth="200" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="3*" MinWidth="300" />
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="1*" />
+      <RowDefinition Height="50" />
+    </Grid.RowDefinitions>
+
+    <DockPanel
+      Name="MenuPanel"
+      Grid.Row="0"
+      Grid.Column="0"
+      Grid.ColumnSpan="2">
+      <Menu DockPanel.Dock="Top">
+        <MenuItem Header="_File">
+          <MenuItem Header="_Open Project Folder..." />
+          <Separator />
+          <MenuItem Header="_Exit" />
+        </MenuItem>
+        <MenuItem Header="_Edit">
+          <MenuItem Header="Stop Words Editor" />
+        </MenuItem>
+        <MenuItem Header="_Help">
+          <MenuItem Header="About" />
+        </MenuItem>
+      </Menu>
+    </DockPanel>
+
+    <Border
+      Name="MenuBorder"
+      Grid.Row="0"
+      Grid.Column="0"
+      Grid.ColumnSpan="5"
+      BorderBrush="Gray"
+      BorderThickness="0,0,0,1" />
+
+    <GridSplitter
+      Grid.Row="1"
+      Grid.RowSpan="3"
+      Grid.Column="1"
+      Width="4"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Stretch" />
+
+    <!--  Files panel  -->
+    <DockPanel
+      Name="FilesPanel"
+      Grid.Row="1"
+      Grid.Column="0"
+      VerticalAlignment="Stretch">
+      <TextBlock
+        HorizontalAlignment="Center"
+        DockPanel.Dock="Top"
+        Text="Files" />
+      <ListBox
+        Name="FilesListBox"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        BorderBrush="Gray"
+        BorderThickness="1,1,0,0"
+        DockPanel.Dock="Bottom"
+        Items="{Binding Files}"
+        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+        SelectedItem="{Binding SelectedFile, Mode=OneWayToSource}">
+        <ListBox.ItemTemplate>
+          <DataTemplate DataType="{x:Type coreModels:HelpAndManualTopic}">
+            <TextBlock
+              Margin="1,5,0,5"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Center"
+              FontSize="16"
+              Text="{Binding Title}" />
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </DockPanel>
+
+
+    <!--  Issues panel  -->
+    <DockPanel
+      Name="IssuesPanel"
+      Grid.Row="1"
+      Grid.Column="2"
+      VerticalAlignment="Stretch">
+      <TextBlock
+        HorizontalAlignment="Center"
+        DockPanel.Dock="Top"
+        Text="Issues" />
+      <ListBox
+        Name="IssuesListBox"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        BorderBrush="Gray"
+        BorderThickness="0,1,0,0"
+        DockPanel.Dock="Bottom"
+        Items="{Binding Issues}"
+        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+        SelectionMode="Multiple">
+        <ListBox.ItemTemplate>
+          <DataTemplate DataType="{x:Type coreModels:Paragraph}">
+            <TextBlock
+              Margin="1,5,0,5"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Center"
+              FontSize="12"
+              Text="{Binding RawContent}"
+              TextWrapping="Wrap" />
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </DockPanel>
+
+    <Border
+      Name="HorizontalButtonsBorder"
+      Grid.Row="2"
+      Grid.Column="0"
+      Grid.ColumnSpan="4"
+      BorderBrush="Gray"
+      BorderThickness="0,2,0,0" />
+
+    <!--  Buttons  -->
+    <Button
+      Name="FixAllButton"
+      Grid.Row="2"
+      Grid.Column="0"
+      Margin="5"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch"
+      Content="Fix all" />
+
+    <Grid
+      Name="DocumentLevelButtonsGrid"
+      Grid.Row="2"
+      Grid.Column="2"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch"
+      ColumnDefinitions="1*,1*">
+      <Button
+        Name="FixIssueButton"
+        Grid.Column="0"
+        Margin="5"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Content="Fix issue"
+        DockPanel.Dock="Left" />
+      <Button
+        Name="IgnoreIssueButton"
+        Grid.Column="1"
+        Margin="5"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Content="Ignore issue" />
+    </Grid>
+  </Grid>
+
+</Window>
